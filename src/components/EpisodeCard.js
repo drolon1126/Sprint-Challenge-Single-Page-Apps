@@ -4,18 +4,11 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia'
 
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
     margin: 10,
-  },
-  media: {
-    height: 140,
-  },
-  name:{
-    margin: 0,
   },
   status: {
     color: 'gray',
@@ -24,25 +17,23 @@ const useStyles = makeStyles({
   },
 });
 
-export default function CharacterCard(props) {
+export default function EpisodeCard (props) {
   const classes = useStyles();
   return (
     <Card className={classes.card}>
 
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.char.image}
-          title=""
-        />
         <CardContent>
-          <h1 className={classes.name}>{props.char.name}</h1>
-          <h4 className={classes.status}>{`${props.char.species} ${props.char.status}`}</h4>
-          <p>{`Location: ${props.char.location.name}`}</p>
-          <p>{`Origin: ${props.char.origin.name}`}</p>
+          <h1>{props.ep.name}</h1>
+          <h4 className={classes.status}>{props.ep.air_date}</h4>
+          <p>{`Episode: ${props.ep.name} ${props.ep.episode}`}</p>
         </CardContent>
 
       </CardActionArea>
+      
+      <CardActions>
+        <p>{`${props.ep.characters.length} characters`}</p>
+      </CardActions>
 
     </Card>
   );
